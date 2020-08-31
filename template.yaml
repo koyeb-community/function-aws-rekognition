@@ -1,0 +1,37 @@
+parameters:
+    - name: STORE
+      description: "The store to watch to trigger the function and save the AWS Rekognition result."
+    - name: AWS_ACCESS_KEY
+      description: "The secret name containing your AWS access key. Must be a valid AWS access key with access to the AWS Rekognition API."
+      required: true
+      type: "SECRET_REF"
+    - name: AWS_SECRET_KEY
+      description: "The secret name containing your AWS secret key. Must be a valid AWS secret key with access to the AWS Rekognition API."
+      required: true
+      type: "SECRET_REF"
+    - name: AWS_REGION
+      description: "The region used to perform the AWS Rekognition API call."
+      type: "STRING"
+      default: "eu-west-1"
+    - name: REKOGNITION_FILE_REFIX
+      description: "The file prefix used to store the AWS Rekognition response."
+      type: "STRING"
+      default: "aws-rekognition"
+    - name: REKOGNITION_FUNCTION
+      description: "The name of the Rekognition operation to perform."
+      type: "STRING"
+      default: "label-detection"
+  template: |
+    env:
+      AWS_ACCESS_KEY:
+        value_from_secret: {{ .AWS_ACCESS_KEY }}
+      AWS_SECRET_KEY:
+        value_from_secret: {{ .AWS_SECRET_KEY }}
+      AWS_REGION: {{ .AWS_REGION}}
+      REKOGNITION_FILE_REFIX: {{ .REKOGNITION_FILE_REFIX }}
+      REKOGNITION_FUNCTION: {{ .REKOGNITION_FUNCTION }}
+    volumes:
+    - name: "store"
+      store: {{ .STORE }}
+    events:
+    - store: {{ .STORE }}
