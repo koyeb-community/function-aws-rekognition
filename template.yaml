@@ -23,13 +23,13 @@ parameters:
       default: "label-detection"
   template: |
     env:
-      AWS_ACCESS_KEY:
+    - AWS_ACCESS_KEY:
         value_from_secret: {{ .AWS_ACCESS_KEY }}
-      AWS_SECRET_KEY:
+    - AWS_SECRET_KEY:
         value_from_secret: {{ .AWS_SECRET_KEY }}
-      AWS_REGION: {{ .AWS_REGION}}
-      REKOGNITION_FILE_REFIX: {{ .REKOGNITION_FILE_REFIX }}
-      REKOGNITION_FUNCTION: {{ .REKOGNITION_FUNCTION }}
+    - AWS_REGION: {{ .AWS_REGION}}
+    - REKOGNITION_FILE_REFIX: {{ .REKOGNITION_FILE_REFIX }}
+    - REKOGNITION_FUNCTION: {{ .REKOGNITION_FUNCTION }}
     volumes:
     - name: "store"
       store: {{ .STORE }}
