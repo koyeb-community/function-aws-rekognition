@@ -1,6 +1,7 @@
 parameters:
     - name: STORE
       description: "The store to watch to trigger the function and save the AWS Rekognition result."
+      type: "STORE_REF"
     - name: AWS_ACCESS_KEY
       description: "The secret name containing your AWS access key. Must be a valid AWS access key with access to the AWS Rekognition API."
       required: true
