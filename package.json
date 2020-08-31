@@ -1,0 +1,11 @@
+{
+  "name": "function-aws-rekognition",
+  "version": "1.0.0",
+  "main": "./aws-rekognition.js",
+  "homepage": "https://www.koyeb.com",
+  "repository": "https://github.com/koyeb-community/function-aws-rekognition",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.742.0"
+  }
+}
