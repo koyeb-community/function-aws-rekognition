@@ -21,17 +21,17 @@ parameters:
       description: "The name of the Rekognition operation to perform."
       type: "STRING"
       default: "label-detection"
-  template: |
+template: |
     env:
-    - AWS_ACCESS_KEY:
-        value_from_secret: {{ .AWS_ACCESS_KEY }}
-    - AWS_SECRET_KEY:
-        value_from_secret: {{ .AWS_SECRET_KEY }}
-    - AWS_REGION: {{ .AWS_REGION}}
-    - REKOGNITION_FILE_REFIX: {{ .REKOGNITION_FILE_REFIX }}
-    - REKOGNITION_FUNCTION: {{ .REKOGNITION_FUNCTION }}
+        AWS_ACCESS_KEY:
+            value_from_secret: {{ .AWS_ACCESS_KEY }}
+        AWS_SECRET_KEY:
+            value_from_secret: {{ .AWS_SECRET_KEY }}
+        AWS_REGION: {{ .AWS_REGION}}
+        REKOGNITION_FILE_REFIX: {{ .REKOGNITION_FILE_REFIX }}
+        REKOGNITION_FUNCTION: {{ .REKOGNITION_FUNCTION }}
     volumes:
     - name: "store"
-      store: {{ .STORE }}
+    store: {{ .STORE }}
     events:
     - store: {{ .STORE }}
